@@ -1,7 +1,7 @@
 // ConnectedLab Slackbot for Quality of Life
 
 // TODO: Remove yucky hard-coded stuff
-var AUTH_TOKEN = 'xoxb-33874343796-wpQlvxhUNHZOzT0WUsTkmc6o'
+var AUTH_TOKEN = 'xoxp-2199180409-2199189683-30476680962-348a01c80a'
 
 // Begin Initialization stuff
 if (!process.env.token) {
@@ -22,7 +22,6 @@ var bot = controller.spawn({
 
 // Begin Controllers
 controller.hears(['get names'], 'direct_message', function(bot, message) {
-	bot.api.oauth.access
     bot.api.reactions.add({
         timestamp: message.ts,
         channel: message.channel,
@@ -32,6 +31,6 @@ controller.hears(['get names'], 'direct_message', function(bot, message) {
             bot.botkit.log('Failed to add emoji reaction :(', err);
         }
     });
-    // bot.botkit.log(bot.api.users.list(1))
-    bot.botkit.log(bot.api.auth.test(AUTH_TOKEN))
+    bot.botkit.log(bot.api.users.list(AUTH_TOKEN, 1))
+    // bot.botkit.log(bot.api.auth.test(AUTH_TOKEN))
 });
